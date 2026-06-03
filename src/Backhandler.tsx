@@ -11,6 +11,8 @@ export interface CustomStyle extends Style {
 }
 
 export class Backhandler extends Component<BackhandlerProps<CustomStyle>> {
+    private backHandlerSubscription: ReturnType<typeof BackHandler.addEventListener> | null = null;
+
     constructor(props: BackhandlerProps<CustomStyle>){
         super(props)
         this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
@@ -24,11 +26,11 @@ export class Backhandler extends Component<BackhandlerProps<CustomStyle>> {
     }
 
     componentDidMount() {
-        BackHandler.addEventListener('hardwareBackPress', this.handleBackButtonClick);
+        this.backHandlerSubscription = BackHandler.addEventListener('hardwareBackPress', this.handleBackButtonClick);
     }
-    
+
     componentWillUnmount() {
-        BackHandler.removeEventListener('hardwareBackPress', this.handleBackButtonClick);
+        this.backHandlerSubscription?.remove();
     }
     
     handleBackButtonClick() {
