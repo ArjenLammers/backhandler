@@ -1,7 +1,7 @@
 {
   "name": "backhandler",
   "widgetName": "Backhandler",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Disregard back events on page",
   "copyright": "2020 Incentro Business Acceleration B.V.",
   "author": "Bart Onstee",
